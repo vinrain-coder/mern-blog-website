@@ -43,7 +43,7 @@ export default function Header() {
           <FaMoon className='text-xl' />
         </Button>
         <Link to='/sign-in'>
-          <Button className='px-2 font-semibold border border-pink-500 bg-white text-slate-500 hover:text-white hover:bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500' outline>
+          <Button className='text-slate-500 border border-pink-500 hover:text-white hover:bg-gradient-to-r from-purple-500 to-pink-500 font-bold'>
             Sign In
           </Button>
         </Link>
@@ -119,7 +119,7 @@ export default function Header() {
         <FaMoon className='text-xl' />
       </Button>
       <Link to='/sign-in'>
-        <Button className='px-2 font-semibold border border-pink-500 bg-white text-slate-500 hover:text-white hover:bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500'>
+        <Button className='text-slate-500 border border-pink-500 hover:text-white hover:bg-gradient-to-r from-purple-500 to-pink-500 font-bold'>
           Sign In
         </Button>
       </Link>
