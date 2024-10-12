@@ -161,11 +161,33 @@ export default function Header() {
         <Button className="w-12 h-10 rounded-full" color="gray">
           <FaMoon className="text-xl" />
         </Button>
-        <Link to="/sign-in">
-          <Button className="text-slate-500 border border-pink-500 hover:text-white hover:bg-gradient-to-r from-purple-500 to-pink-500 font-bold">
-            Sign In
-          </Button>
-        </Link>
+        {currentUser ? (
+          <Dropdown
+            arrowIcon={false}
+            inline
+            label={
+              <Avatar alt="user" img={currentUser.profilePicture} rounded />
+            }
+          >
+            <Dropdown.Header>
+              <span className="block text-sm">@{currentUser.username}</span>
+              <span className="block text-sm font-medium truncate">
+                {currentUser.email}
+              </span>
+            </Dropdown.Header>
+            <Link to={"/dashboard?tab=profile"}>
+              <Dropdown.Item>Profile</Dropdown.Item>
+            </Link>
+            <Dropdown.Divider />
+            <Dropdown.Item>Logout</Dropdown.Item>
+          </Dropdown>
+        ) : (
+          <Link to="/sign-in">
+            <Button className="text-slate-500 border border-pink-500 hover:text-white hover:bg-gradient-to-r from-purple-500 to-pink-500 font-bold">
+              Sign In
+            </Button>
+          </Link>
+        )}
         <button onClick={toggleMenu} className="text-2xl md:hidden">
           {menuOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
         </button>
