@@ -1,14 +1,17 @@
 import { Avatar, Button, Dropdown, Navbar, TextInput } from "flowbite-react";
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineSearch, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { FaMoon } from "react-icons/fa";
+import { FaMoon, FaSun } from "react-icons/fa";
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleTheme } from "../redux/theme/themeSlice";
 
 export default function Header() {
+  const dispatch = useDispatch();
+  const { theme } = useSelector((state) => state.theme);
   const { currentUser } = useSelector((state) => state.user);
   const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation(); // To detect the active route
+  const location = useLocation();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -44,8 +47,12 @@ export default function Header() {
 
       {/* Right Side Buttons for Small Screens */}
       <div className="flex gap-2 items-center md:hidden">
-        <Button className="w-12 h-10 rounded-full" color="gray">
-          <FaMoon className="text-xl" />
+        <Button
+          className="w-12 h-10 rounded-full"
+          color="gray"
+          onClick={() => dispatch(toggleTheme())}
+        >
+          {theme === "light" ? <FaSun /> : <FaMoon />}
         </Button>
         {currentUser ? (
           <Dropdown
@@ -158,8 +165,12 @@ export default function Header() {
         </ul>
       </nav>
       <div className="hidden md:flex gap-2 items-center">
-        <Button className="w-12 h-10 rounded-full" color="gray">
-          <FaMoon className="text-xl" />
+        <Button
+          className="w-12 h-10 rounded-full"
+          color="gray"
+          onClick={() => dispatch(toggleTheme())}
+        >
+          {theme === "light" ? <FaSun /> : <FaMoon />}
         </Button>
         {currentUser ? (
           <Dropdown
