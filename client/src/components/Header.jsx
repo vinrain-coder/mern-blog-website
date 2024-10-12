@@ -20,7 +20,7 @@ export default function Header() {
   const isActive = (path) => location.pathname === path;
 
   return (
-    <Navbar className="relative border-b-2 py-2 px-2 w-full flex flex-col items-center justify-between dark:bg-[rgb(16,23,42)] ">
+    <Navbar className="relative border-b-2 py-2 px-2 w-full flex flex-col items-center justify-between ">
       {/* Logo */}
       <Link
         to="/"
@@ -34,7 +34,7 @@ export default function Header() {
 
       {/* Search Form for Medium Screens and Up */}
       <form className="hidden md:flex items-center relative">
-        <TextInput type="text" placeholder="Search..." className="relativ" />
+        <TextInput type="text" placeholder="Search..." className="relative" />
         <AiOutlineSearch className="absolute right-2 top-2 text-xl cursor-pointer" />
       </form>
 
