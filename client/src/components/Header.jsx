@@ -5,6 +5,7 @@ import { FaMoon, FaSun } from "react-icons/fa";
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../redux/theme/themeSlice";
+import { logoutSuccess } from "../redux/user/userSlice";
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -18,6 +19,22 @@ export default function Header() {
   };
 
   const isActive = (path) => location.pathname === path;
+
+  const handleLogout = async () => {
+    try {
+      const res = await fetch('/api/user/logout', {
+        method: 'POST',
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        console.log(data.message);
+      } else {
+        dispatch(logoutSuccess());
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   return (
     <Navbar className="relative border-b-2 py-2 px-2 w-full flex flex-col items-center justify-between ">
@@ -73,7 +90,7 @@ export default function Header() {
               <Dropdown.Item>Profile</Dropdown.Item>
             </Link>
             <Dropdown.Divider />
-            <Dropdown.Item>Logout</Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
           </Dropdown>
         ) : (
           <Link to="/sign-in">
@@ -89,7 +106,7 @@ export default function Header() {
 
       {/* Dropdown Menu for Small Screens */}
       <nav
-        className={`absolute top-full left-0 w-full bg-white md:hidden z-50 dark:bg-[rgb(16,23,42)] dark:text-gray-200 ${
+        className={`absolute top-full left-0 w-full bg-white dark:text-gray-200 dark:bg-[rgb(16,23,42)] shadow-lg rounded-md md:hidden z-50 ${
           menuOpen ? "block" : "hidden"
         }`}
       >
@@ -191,7 +208,7 @@ export default function Header() {
               <Dropdown.Item>Profile</Dropdown.Item>
             </Link>
             <Dropdown.Divider />
-            <Dropdown.Item>Logout</Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
           </Dropdown>
         ) : (
           <Link to="/sign-in">
