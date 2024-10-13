@@ -102,7 +102,7 @@ export default function DashProfile() {
       return;
     }
     if (imageFileUploading) {
-      setUpdateUserError("Please waoit for the image to upload")
+      setUpdateUserError("Please wait for the image to upload")
       return;
     }
 
@@ -120,6 +120,7 @@ export default function DashProfile() {
         dispatch(updateFailure(data.message));
         setUpdateUserError(data.message)
       } else {
+        setImageFileUploadProgress(null);
         dispatch(updateSuccess(data));
         setUpdateUserSuccess("User's profile updated successfully")
       }
@@ -210,12 +211,12 @@ export default function DashProfile() {
         <span className="cursor-pointer hover:underline">Logout</span>
       </div>
       {updateUserSuccess&&(
-        <Alert className="bg-green-500">
+        <Alert className="bg-green-500 mt-5 text-white">
           {updateUserSuccess}
         </Alert>
       )}
       {updateUserError&&(
-        <Alert className="bg-rose-300">
+        <Alert className="bg-red-500 mt-5">
           {updateUserError}
         </Alert>
       )}
