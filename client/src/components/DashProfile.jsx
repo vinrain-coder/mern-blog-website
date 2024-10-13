@@ -21,9 +21,10 @@ import {
 } from "../redux/user/userSlice";
 import { useDispatch } from "react-redux";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
+import { Link } from "react-router-dom";
 
 export default function DashProfile() {
-  const { currentUser, error } = useSelector((state) => state.user);
+  const { currentUser, error, loading } = useSelector((state) => state.user);
   const [imageFile, setImageFile] = useState(null);
   const [imageFileUrl, setImageFileUrl] = useState(null);
   const [imageFileUploadProgress, setImageFileUploadProgress] = useState(null);
@@ -156,8 +157,8 @@ export default function DashProfile() {
 
   const handleLogout = async () => {
     try {
-      const res = await fetch('/api/user/logout', {
-        method: 'POST',
+      const res = await fetch("/api/user/logout", {
+        method: "POST",
       });
       const data = await res.json();
       if (!res.ok) {
@@ -242,9 +243,20 @@ export default function DashProfile() {
         <Button
           type="submit"
           className="text-slate-500 border border-pink-500 hover:text-white hover:bg-gradient-to-r from-purple-500 to-pink-500 font-bold"
+          disabled={loading || imageFileUploading}
         >
-          Update
+          {loading ? "Loading..." : "Update"}
         </Button>
+        {currentUser.isAdmin && (
+          <Link to={"/create-post"}>
+            <Button
+              type="button"
+              className="w-full border border-pink-500 hover:text-white bg-gradient-to-r from-purple-500 to-pink-500 font-bold"
+            >
+              Create a post
+            </Button>
+          </Link>
+        )}
       </form>
       <div className="text-red-500 flex justify-between mt-5">
         <span
@@ -254,7 +266,9 @@ export default function DashProfile() {
           Delete Account
         </span>
 
-        <span onClick={handleLogout} className="cursor-pointer hover:underline">Logout</span>
+        <span onClick={handleLogout} className="cursor-pointer hover:underline">
+          Logout
+        </span>
       </div>
 
       {updateUserSuccess && (
