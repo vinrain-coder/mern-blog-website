@@ -16,7 +16,7 @@ export default function CallToAction() {
           </a>
         </Button>
       </div>
-      <div className="p-7 rounded-md">
+      <div className="p-7 flex-1">
         <img src="https://www.hostinger.com/tutorials/wp-content/uploads/sites/2/2021/09/how-to-write-a-blog-post.png"/>
       </div>
     </div>
