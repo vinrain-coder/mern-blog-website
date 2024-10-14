@@ -9,10 +9,12 @@ export const create = async (req, res, next) => {
     return next(errorHandler(400, "Please provide all required fields"));
   }
   const slug = req.body.title
-    .split(" ")
-    .join("_")
-    .toLowerCase()
-    .replace(/[^a-zA-Z0-9-]/g, "");
+    .toLowerCase()                      // Convert to lowercase
+    .replace(/\s+/g, "-")               // Replace spaces with hyphens
+    .replace(/[^a-z0-9-]/g, "")         // Remove non-alphanumeric characters except hyphens
+    .replace(/--+/g, "-")               // Replace multiple hyphens with a single one
+    .trim();                            // Remove leading or trailing spaces
+
   const newPost = new Post({
     ...req.body,
     slug,
@@ -83,6 +85,7 @@ export const deletepost = async (req, res, next) => {
     next(error);
   }
 };
+
 
 export const updatepost = async (req, res, next) => {
   if (!req.user.isAdmin || req.user.id !== req.params.userId) {
