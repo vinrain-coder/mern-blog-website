@@ -45,7 +45,7 @@ export default function DashSidebar() {
   return (
     <Sidebar className='w-full md:w-56'>
       <Sidebar.Items>
-        <Sidebar.ItemGroup className='flex flex-col gap-4 py-2 px-2'>
+        <Sidebar.ItemGroup className='flex flex-col gap-2 py-2 px-2'>
           {currentUser && currentUser.isAdmin && (
             <Link to='/dashboard?tab=dash'>
               <Sidebar.Item

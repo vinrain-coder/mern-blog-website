@@ -117,7 +117,8 @@ export default function CreatePost() {
           />
           <Button
             type="button"
-            className="text-slate-600 border border-pink-500 hover:text-white hover:bg-gradient-to-r from-purple-500 to-pink-500 font-bold"
+            outline
+            gradientDuoTone="purpleToPink"
             onClick={handleUploadImage}
             disabled={imageUploadProgress}
           >
@@ -154,12 +155,12 @@ export default function CreatePost() {
         />
         <Button
           type="submit"
-          className="border-pink-500 bg-gradient-to-r from-purple-500 to-pink-500 font-bold"
+          gradientDuoTone="purpleToPink"
         >
           Publish
         </Button>
         {publisherror && (
-          <Alert className="bg-red-400 mt-5">{publisherror}</Alert>
+          <Alert color="failure">{publisherror}</Alert>
         )}
       </form>
     </div>

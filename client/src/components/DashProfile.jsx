@@ -242,7 +242,8 @@ export default function DashProfile() {
         />
         <Button
           type="submit"
-          className="text-slate-500 border border-pink-500 hover:text-white hover:bg-gradient-to-r from-purple-500 to-pink-500 font-bold"
+          gradientDuoTone="purpleToPink"
+          outline
           disabled={loading || imageFileUploading}
         >
           {loading ? "Loading..." : "Update"}
@@ -251,7 +252,8 @@ export default function DashProfile() {
           <Link to={"/create-post"}>
             <Button
               type="button"
-              className="w-full border border-pink-500 hover:text-white bg-gradient-to-r from-purple-500 to-pink-500 font-bold"
+              gradientDuoTone="pinkToOrange"
+              className="w-full"
             >
               Create a post
             </Button>
@@ -278,33 +280,30 @@ export default function DashProfile() {
       )}
 
       {updateUserError && (
-        <Alert className="bg-red-500 mt-5">{updateUserError}</Alert>
+        <Alert color="failure">{updateUserError}</Alert>
       )}
 
-      {error && <Alert className="bg-red-500 mt-5">{error}</Alert>}
+      {error && <Alert color="failure">{error}</Alert>}
+      
       <Modal
         show={showModal}
         onClose={() => setShowModal(false)}
         popup
-        // size="md"
-        className="sm:max-w-[600px] m-auto sm:mt-[200px]"
+        size='md'
       >
-        <Modal.Header className="p-4" />
+        <Modal.Header />
         <Modal.Body>
-          <div className="text-center">
-            <HiOutlineExclamationCircle className="h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto" />
-            <h3 className="mb-5 text-lg text-gray-500 dark:text-gray-400">
+          <div className='text-center'>
+            <HiOutlineExclamationCircle className='h-14 w-14 text-gray-400 dark:text-gray-200 mb-4 mx-auto' />
+            <h3 className='mb-5 text-lg text-gray-500 dark:text-gray-400'>
               Are you sure you want to delete your account?
             </h3>
-            <div className="flex justify-center gap-10 mb-4">
-              <Button className="bg-red-500" onClick={handleDeleteUser}>
+            <div className='flex justify-center gap-4'>
+              <Button color='failure' onClick={handleDeleteUser}>
                 Yes, I'm sure
               </Button>
-              <Button
-                className="bg-gray-500"
-                onClick={() => setShowModal(false)}
-              >
-                No, Cancel
+              <Button color='gray' onClick={() => setShowModal(false)}>
+                No, cancel
               </Button>
             </div>
           </div>

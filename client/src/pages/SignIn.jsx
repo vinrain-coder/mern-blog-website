@@ -78,7 +78,7 @@ export default function SignIn() {
               />
             </div>
             <Button
-              className="text-slate-600 border border-pink-500 hover:text-white hover:bg-gradient-to-r from-purple-500 to-pink-500 font-bold"
+            gradientDuoTone="purpleToPink"
               type="submit"
               disabled={loading}
             >
