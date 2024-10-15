@@ -66,7 +66,7 @@ export default function Header() {
       </Link>
       
       {/* Large screen search */}
-      <form onSubmit={handleSubmit} className="hidden md:flex w-1/2">
+      <form onSubmit={handleSubmit} className="hidden md:flex">
         <TextInput
           type="text"
           placeholder="Search..."
