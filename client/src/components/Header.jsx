@@ -64,9 +64,9 @@ export default function Header() {
         </span>
         Blog
       </Link>
-      
-      {/* Large screen search */}
-      <form onSubmit={handleSubmit} className="hidden md:flex w-1/2">
+
+      {/* Large screen search centered */}
+      <form onSubmit={handleSubmit} className="hidden md:flex justify-center w-1/2 mx-auto">
         <TextInput
           type="text"
           placeholder="Search..."
@@ -86,17 +86,22 @@ export default function Header() {
         <AiOutlineSearch />
       </Button>
 
-      {/* Small screen search input */}
+      {/* Small screen search dropdown */}
       {showSearchInput && (
-        <form onSubmit={handleSubmit} className="md:hidden w-full flex justify-center mt-2">
-          <TextInput
-            type="text"
-            placeholder="Search..."
-            rightIcon={AiOutlineSearch}
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-          />
-        </form>
+        <Dropdown inline label={<AiOutlineSearch className="text-xl" />}>
+          <Dropdown.Item>
+            <form onSubmit={handleSubmit} className="flex justify-between">
+              <TextInput
+                type="text"
+                placeholder="Search..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="mr-2"
+              />
+              <Button type="submit">Search</Button>
+            </form>
+          </Dropdown.Item>
+        </Dropdown>
       )}
 
       <div className="flex gap-2 md:order-2">
@@ -109,7 +114,7 @@ export default function Header() {
         >
           {theme === 'light' ? <FaSun /> : <FaMoon />}
         </Button>
-        
+
         {currentUser ? (
           <Dropdown
             arrowIcon={false}
@@ -139,13 +144,13 @@ export default function Header() {
 
       <Navbar.Collapse>
         <Navbar.Link active={path === '/'} as="div">
-          <Link to="/">Home</Link>
+          <Link to="/" className={`text-${theme === 'light' ? 'black' : 'white'}`}>Home</Link>
         </Navbar.Link>
         <Navbar.Link active={path === '/about'} as="div">
-          <Link to="/about">About</Link>
+          <Link to="/about" className={`text-${theme === 'light' ? 'black' : 'white'}`}>About</Link>
         </Navbar.Link>
         <Navbar.Link active={path === '/projects'} as="div">
-          <Link to="/projects">Projects</Link>
+          <Link to="/projects" className={`text-${theme === 'light' ? 'black' : 'white'}`}>Projects</Link>
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
