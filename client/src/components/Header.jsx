@@ -145,7 +145,7 @@ export default function Header() {
           <Link to="/about">About</Link>
         </Navbar.Link>
         <Navbar.Link as="div">
-          <Link to="/projects">Projects</Link>
+          <Link to="/project">Projects</Link>
         </Navbar.Link>
       </Navbar.Collapse>
     </Navbar>
