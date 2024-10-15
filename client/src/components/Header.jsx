@@ -40,13 +40,13 @@ export default function Header() {
     }
   };
 
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   const urlParams = new URLSearchParams(location.search);
-  //   urlParams.set('searchTerm', searchTerm);
-  //   const searchQuery = urlParams.toString();
-  //   navigate(`/search?${searchQuery}`);
-  // };
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const urlParams = new URLSearchParams(location.search);
+    urlParams.set('searchTerm', searchTerm);
+    const searchQuery = urlParams.toString();
+    navigate(`/search?${searchQuery}`);
+  };
 
   return (
     <Navbar className='border-b-2'>
@@ -59,22 +59,22 @@ export default function Header() {
         </span>
         Blog
       </Link>
-      <form >
+      <form onSubmit={handleSubmit}>
         <TextInput
           type='text'
           placeholder='Search...'
           rightIcon={AiOutlineSearch}
-          className='hidden md:flex'
-          // value={searchTerm}
-          // onChange={(e) => setSearchTerm(e.target.value)}
+          className='hidden lg:inline'
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
       </form>
-      <Button className='w-12 h-10 md:hidden dark:bg-slate-600' color='gray' pill>
+      <Button className='w-12 h-10 lg:hidden' color='gray' pill>
         <AiOutlineSearch />
       </Button>
       <div className='flex gap-2 md:order-2'>
         <Button
-          className='w-12 h-10 dark:bg-slate-600'
+          className='w-12 h-10 hidden sm:inline'
           color='gray'
           pill
           onClick={() => dispatch(toggleTheme())}
@@ -99,7 +99,7 @@ export default function Header() {
               <Dropdown.Item>Profile</Dropdown.Item>
             </Link>
             <Dropdown.Divider />
-            <Dropdown.Item onClick={handleLogout}>Logout</Dropdown.Item>
+            <Dropdown.Item onClick={handleLogout}>Log out</Dropdown.Item>
           </Dropdown>
         ) : (
           <Link to='/sign-in'>
