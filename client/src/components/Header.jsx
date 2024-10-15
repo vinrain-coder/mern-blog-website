@@ -78,7 +78,7 @@ export default function Header() {
 
       {/* Small screen search button */}
       <Button
-        className="w-12 h-10 md:hidden"
+        className="w-12 h-10 hidden"
         color="gray"
         pill
         onClick={toggleSearchInput}
@@ -88,7 +88,7 @@ export default function Header() {
 
       {/* Small screen search input */}
       {showSearchInput && (
-        <form onSubmit={handleSubmit} className="md:hidden w-full flex justify-center mt-2">
+        <form onSubmit={handleSubmit} className="hidden w-full flex justify-center mt-2">
           <TextInput
             type="text"
             placeholder="Search..."
