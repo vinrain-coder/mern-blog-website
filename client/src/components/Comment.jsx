@@ -107,7 +107,7 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
                   "!text-blue-500"
                 }`}
               >
-                <FaThumbsUP className="text-sm" />
+                <FaThumbsUp className="text-sm" />
               </button>
               <p className="text-gray-400">
                 {comment.numberOfLikes > 0 &&
