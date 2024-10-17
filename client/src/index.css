@@ -40,6 +40,6 @@ body {
 .dark .post-content a{
   color: red;
 }
-.dark.post-content p{
-  color: #E0E0E0;
+.dark .post-content p{
+  color: #B0B0B0;
 }
