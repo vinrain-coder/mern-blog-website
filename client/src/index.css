@@ -11,6 +11,10 @@ body {
   font-size: 1.05rem;
 }
 
+.dark .ql-editor{
+  color: #9CA3AF;
+}
+
 .post-content p {
   margin-bottom: 0.5rem;
 }
@@ -40,6 +44,6 @@ body {
 .dark .post-content a{
   color: red;
 }
-.dark .post-content p{
-  color: #B0B0B0;
+.dark .post-content{
+  color: #9CA3AF;
 }
